@@ -4,7 +4,7 @@ description: Research-backed emotional modes and behavioral stance detection for
 version: 1.0.0
 allowed-tools: [Read, Grep, Glob, Bash, Edit, Write]
 triggers: ["/paranoid", "/creative", "/steady", "/minimal", "/fresh-eyes", "/neutral", "/detect", "/stance"]
-author: claude-emotions-research
+author: a14a-org
 ---
 
 # Claude Temper: Emotional Modes + Behavioral Detection

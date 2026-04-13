@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# claude-emotions installer
-# Usage: curl -fsSL https://raw.githubusercontent.com/USER/claude-emotions/main/install.sh | bash
+# claude-temper installer
+# Usage: curl -fsSL https://raw.githubusercontent.com/USER/claude-temper/main/install.sh | bash
 # Uninstall: curl -fsSL ... | bash -s -- --uninstall
 
 REPO="https://github.com/a14a-org/claude-temper.git"
@@ -63,7 +63,7 @@ PYEOF
 
 # --- uninstall ---
 uninstall() {
-  info "Uninstalling claude-emotions..."
+  info "Uninstalling claude-temper..."
   has_python || fail "python3 required for safe settings.json editing"
 
   [ -f "$SETTINGS" ] && json_remove "$SETTINGS" && ok "Removed hook + status config from settings.json"

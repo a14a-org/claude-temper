@@ -103,7 +103,7 @@ Results are NDJSON (one JSON object per trial) in `results/`.
 ## Project structure
 
 ```
-claude-emotions/
+claude-temper/
 ├── skill/                    # Installable Claude Code skill
 │   ├── SKILL.md             # Skill definition (modes + detection)
 │   ├── hooks/               # PostToolUse + Stop hooks
