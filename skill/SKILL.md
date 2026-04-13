@@ -1,9 +1,8 @@
 ---
-name: claude-temper
-description: Research-backed emotional modes and behavioral stance detection for AI-assisted coding. Activate modes like /paranoid, /creative, /steady to shape code generation. Use /detect to analyze code for behavioral signatures. Based on 1,950+ experiments.
-version: 1.0.0
-allowed-tools: [Read, Grep, Glob, Bash, Edit, Write]
-triggers: ["/paranoid", "/creative", "/steady", "/minimal", "/fresh-eyes", "/neutral", "/detect", "/stance"]
+name: temper
+description: Behavioral stance detection for AI-assisted coding. Use /detect to analyze code for behavioral signatures. Use /stance to check active mode. Individual modes available as /paranoid, /creative, /steady, /minimal, /fresh-eyes.
+version: 1.1.0
+allowed-tools: [Read, Grep, Glob, Bash]
 author: a14a-org
 ---
 

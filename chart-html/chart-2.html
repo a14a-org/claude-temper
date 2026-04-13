@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Validation Rate by Emotion Type</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+            background: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            width: 700px;
+            background: #ffffff;
+        }
+
+        .title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 40px;
+            letter-spacing: -0.3px;
+        }
+
+        .chart {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            height: 300px;
+            padding-bottom: 0;
+            margin-bottom: 16px;
+            border-bottom: 1px solid #f0f0f0;
+            position: relative;
+        }
+
+        /* 50% guide */
+        .chart::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 150px;
+            height: 1px;
+            background: #f0f0f0;
+        }
+
+        .bar-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 120px;
+        }
+
+        .percentage {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 12px;
+        }
+
+        .bar {
+            width: 100px;
+            border-radius: 8px 8px 0 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .bar-paranoia {
+            height: 270px; /* 90% of 300 */
+            background-color: #DC2626;
+        }
+
+        .bar-excitement {
+            height: 180px; /* 60% of 300 */
+            background-color: #D97706;
+        }
+
+        .bar-calm {
+            height: 99px; /* 33% of 300 */
+            background-color: #2563EB;
+        }
+
+        .bar-detachment {
+            height: 99px; /* 33% of 300 */
+            background-color: #64748B;
+        }
+
+        .label {
+            font-size: 14px;
+            font-weight: 500;
+            color: #4b5563;
+            margin-top: 16px;
+            text-align: center;
+        }
+
+        .footnotes {
+            font-size: 12px;
+            color: #6b7280;
+            line-height: 1.6;
+            padding-top: 24px;
+            margin-top: 24px;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .footnote { margin: 6px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Input validation rate by emotion type</div>
+
+        <div class="chart">
+            <div class="bar-group">
+                <div class="percentage">90%</div>
+                <div class="bar bar-paranoia"></div>
+            </div>
+
+            <div class="bar-group">
+                <div class="percentage">60%</div>
+                <div class="bar bar-excitement"></div>
+            </div>
+
+            <div class="bar-group">
+                <div class="percentage">33%</div>
+                <div class="bar bar-calm"></div>
+            </div>
+
+            <div class="bar-group">
+                <div class="percentage">33%</div>
+                <div class="bar bar-detachment"></div>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-around; width: 100%;">
+            <div class="label">Paranoia</div>
+            <div class="label">Excitement</div>
+            <div class="label">Calm</div>
+            <div class="label">Detachment</div>
+        </div>
+
+        <div class="footnotes">
+            <div class="footnote">n=30 per condition, 3 coding tasks</div>
+            <div class="footnote">Paranoia and excitement are both high-arousal. Direction matters, not intensity.</div>
+        </div>
+    </div>
+</body>
+</html>
