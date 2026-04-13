@@ -1,0 +1,969 @@
+{
+  "experimentConfig": {
+    "version": "1.0.0",
+    "lockedAt": "2026-04-12T16:47:13.808Z",
+    "sha256": "48f0034acd43dfea922c94964a9c475d51c968c6385cd6083b6cabf8179d93bd",
+    "design": {
+      "emotions": [
+        "positive-high-arousal",
+        "positive-low-arousal",
+        "negative-high-arousal",
+        "neutral"
+      ],
+      "explicitnessLevels": [
+        "explicit",
+        "implicit"
+      ],
+      "conditions": 8,
+      "tasksPerCondition": 5,
+      "replicationsPerCell": 1,
+      "totalTrials": 40
+    },
+    "apiParams": {
+      "model": "claude-sonnet-4-6",
+      "temperature": 0.7,
+      "max_tokens": 4096,
+      "top_p": 1
+    },
+    "randomSeed": 42,
+    "metrics": [
+      "linesOfCode",
+      "cyclomaticComplexity",
+      "edgeCaseCount",
+      "securityFeatureCount",
+      "commentDensity",
+      "approachType",
+      "tryCatchCount",
+      "typeGuardCount",
+      "validationCount",
+      "errorThrowCount",
+      "nestingDepth",
+      "functionCount",
+      "hasInputValidation"
+    ],
+    "exclusionCriteria": {
+      "codeExtractionFailed": true,
+      "responseEmpty": true,
+      "responseTruncated": true
+    },
+    "analysisPlan": {
+      "primaryTest": "two-way ANOVA (emotion x explicitness) per metric",
+      "alpha": 0.05,
+      "correction": "benjamini-hochberg",
+      "postHoc": "tukey-hsd",
+      "effectSize": "eta-squared with 95% CI"
+    }
+  },
+  "totalTrials": 40,
+  "excludedTrials": 0,
+  "byCondition": [
+    {
+      "condition": {
+        "emotion": "negative-high-arousal",
+        "explicitness": "explicit"
+      },
+      "n": 5,
+      "metrics": {
+        "linesOfCode": {
+          "mean": 48.4,
+          "sd": 36.81,
+          "min": 26,
+          "max": 113
+        },
+        "cyclomaticComplexity": {
+          "mean": 12.8,
+          "sd": 9.68,
+          "min": 4,
+          "max": 29
+        },
+        "edgeCaseCount": {
+          "mean": 3.2,
+          "sd": 2.28,
+          "min": 1,
+          "max": 6
+        },
+        "securityFeatureCount": {
+          "mean": 2,
+          "sd": 2.35,
+          "min": 0,
+          "max": 6
+        },
+        "commentDensity": {
+          "mean": 0.01,
+          "sd": 0.02,
+          "min": 0,
+          "max": 0.034
+        },
+        "tryCatchCount": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "typeGuardCount": {
+          "mean": 0.2,
+          "sd": 0.45,
+          "min": 0,
+          "max": 1
+        },
+        "errorThrowCount": {
+          "mean": 3.2,
+          "sd": 6.06,
+          "min": 0,
+          "max": 14
+        },
+        "nestingDepth": {
+          "mean": 3.4,
+          "sd": 0.55,
+          "min": 3,
+          "max": 4
+        },
+        "functionCount": {
+          "mean": 5.2,
+          "sd": 4.66,
+          "min": 1,
+          "max": 12
+        },
+        "approachType_recursive": {
+          "mean": 0.6,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "approachType_iterative": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "inputValidationRate": {
+          "mean": 0.4,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "condition": {
+        "emotion": "negative-high-arousal",
+        "explicitness": "implicit"
+      },
+      "n": 5,
+      "metrics": {
+        "linesOfCode": {
+          "mean": 42.8,
+          "sd": 28.44,
+          "min": 23,
+          "max": 92
+        },
+        "cyclomaticComplexity": {
+          "mean": 11,
+          "sd": 6.24,
+          "min": 4,
+          "max": 20
+        },
+        "edgeCaseCount": {
+          "mean": 3,
+          "sd": 3,
+          "min": 0,
+          "max": 6
+        },
+        "securityFeatureCount": {
+          "mean": 1.6,
+          "sd": 1.95,
+          "min": 0,
+          "max": 5
+        },
+        "commentDensity": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0.011
+        },
+        "tryCatchCount": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "typeGuardCount": {
+          "mean": 0.2,
+          "sd": 0.45,
+          "min": 0,
+          "max": 1
+        },
+        "errorThrowCount": {
+          "mean": 1.6,
+          "sd": 3.05,
+          "min": 0,
+          "max": 7
+        },
+        "nestingDepth": {
+          "mean": 3.6,
+          "sd": 0.89,
+          "min": 3,
+          "max": 5
+        },
+        "functionCount": {
+          "mean": 4,
+          "sd": 3.67,
+          "min": 1,
+          "max": 8
+        },
+        "approachType_recursive": {
+          "mean": 0.6,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "approachType_iterative": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "inputValidationRate": {
+          "mean": 0.2,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "condition": {
+        "emotion": "neutral",
+        "explicitness": "explicit"
+      },
+      "n": 5,
+      "metrics": {
+        "linesOfCode": {
+          "mean": 35.8,
+          "sd": 23.53,
+          "min": 17,
+          "max": 75
+        },
+        "cyclomaticComplexity": {
+          "mean": 10.6,
+          "sd": 8.35,
+          "min": 4,
+          "max": 25
+        },
+        "edgeCaseCount": {
+          "mean": 3,
+          "sd": 2.55,
+          "min": 0,
+          "max": 6
+        },
+        "securityFeatureCount": {
+          "mean": 2.6,
+          "sd": 4.16,
+          "min": 0,
+          "max": 10
+        },
+        "commentDensity": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "tryCatchCount": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "typeGuardCount": {
+          "mean": 0.2,
+          "sd": 0.45,
+          "min": 0,
+          "max": 1
+        },
+        "errorThrowCount": {
+          "mean": 2,
+          "sd": 3.94,
+          "min": 0,
+          "max": 9
+        },
+        "nestingDepth": {
+          "mean": 3.2,
+          "sd": 0.45,
+          "min": 3,
+          "max": 4
+        },
+        "functionCount": {
+          "mean": 3.4,
+          "sd": 2.88,
+          "min": 1,
+          "max": 7
+        },
+        "approachType_recursive": {
+          "mean": 0.6,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "approachType_iterative": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "inputValidationRate": {
+          "mean": 0.2,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "condition": {
+        "emotion": "neutral",
+        "explicitness": "implicit"
+      },
+      "n": 5,
+      "metrics": {
+        "linesOfCode": {
+          "mean": 39.6,
+          "sd": 24.14,
+          "min": 24,
+          "max": 81
+        },
+        "cyclomaticComplexity": {
+          "mean": 11.4,
+          "sd": 10.09,
+          "min": 4,
+          "max": 29
+        },
+        "edgeCaseCount": {
+          "mean": 3.2,
+          "sd": 2.28,
+          "min": 1,
+          "max": 6
+        },
+        "securityFeatureCount": {
+          "mean": 2.4,
+          "sd": 3.71,
+          "min": 0,
+          "max": 9
+        },
+        "commentDensity": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "tryCatchCount": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "typeGuardCount": {
+          "mean": 0.2,
+          "sd": 0.45,
+          "min": 0,
+          "max": 1
+        },
+        "errorThrowCount": {
+          "mean": 2,
+          "sd": 3.94,
+          "min": 0,
+          "max": 9
+        },
+        "nestingDepth": {
+          "mean": 3,
+          "sd": 0,
+          "min": 3,
+          "max": 3
+        },
+        "functionCount": {
+          "mean": 3.2,
+          "sd": 2.59,
+          "min": 1,
+          "max": 6
+        },
+        "approachType_recursive": {
+          "mean": 0.6,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "approachType_iterative": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "inputValidationRate": {
+          "mean": 0.2,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "condition": {
+        "emotion": "positive-high-arousal",
+        "explicitness": "explicit"
+      },
+      "n": 5,
+      "metrics": {
+        "linesOfCode": {
+          "mean": 37.4,
+          "sd": 23.96,
+          "min": 19,
+          "max": 77
+        },
+        "cyclomaticComplexity": {
+          "mean": 9.8,
+          "sd": 6.53,
+          "min": 5,
+          "max": 21
+        },
+        "edgeCaseCount": {
+          "mean": 3,
+          "sd": 2.35,
+          "min": 0,
+          "max": 5
+        },
+        "securityFeatureCount": {
+          "mean": 1.8,
+          "sd": 2.39,
+          "min": 0,
+          "max": 6
+        },
+        "commentDensity": {
+          "mean": 0,
+          "sd": 0.01,
+          "min": 0,
+          "max": 0.013
+        },
+        "tryCatchCount": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "typeGuardCount": {
+          "mean": 0.4,
+          "sd": 0.55,
+          "min": 0,
+          "max": 1
+        },
+        "errorThrowCount": {
+          "mean": 1.4,
+          "sd": 2.61,
+          "min": 0,
+          "max": 6
+        },
+        "nestingDepth": {
+          "mean": 3,
+          "sd": 0,
+          "min": 3,
+          "max": 3
+        },
+        "functionCount": {
+          "mean": 3.6,
+          "sd": 3.21,
+          "min": 1,
+          "max": 8
+        },
+        "approachType_recursive": {
+          "mean": 0.6,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "approachType_iterative": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "inputValidationRate": {
+          "mean": 0.2,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "condition": {
+        "emotion": "positive-high-arousal",
+        "explicitness": "implicit"
+      },
+      "n": 5,
+      "metrics": {
+        "linesOfCode": {
+          "mean": 43.4,
+          "sd": 33.1,
+          "min": 23,
+          "max": 101
+        },
+        "cyclomaticComplexity": {
+          "mean": 10.4,
+          "sd": 7.44,
+          "min": 4,
+          "max": 23
+        },
+        "edgeCaseCount": {
+          "mean": 2.6,
+          "sd": 2.51,
+          "min": 0,
+          "max": 5
+        },
+        "securityFeatureCount": {
+          "mean": 1,
+          "sd": 0.71,
+          "min": 0,
+          "max": 2
+        },
+        "commentDensity": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "tryCatchCount": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "typeGuardCount": {
+          "mean": 0.2,
+          "sd": 0.45,
+          "min": 0,
+          "max": 1
+        },
+        "errorThrowCount": {
+          "mean": 1.8,
+          "sd": 3.49,
+          "min": 0,
+          "max": 8
+        },
+        "nestingDepth": {
+          "mean": 3.4,
+          "sd": 0.89,
+          "min": 3,
+          "max": 5
+        },
+        "functionCount": {
+          "mean": 4.8,
+          "sd": 4.44,
+          "min": 1,
+          "max": 11
+        },
+        "approachType_recursive": {
+          "mean": 0.6,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "approachType_iterative": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "inputValidationRate": {
+          "mean": 0.2,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "condition": {
+        "emotion": "positive-low-arousal",
+        "explicitness": "explicit"
+      },
+      "n": 5,
+      "metrics": {
+        "linesOfCode": {
+          "mean": 40.6,
+          "sd": 33.45,
+          "min": 17,
+          "max": 98
+        },
+        "cyclomaticComplexity": {
+          "mean": 9.4,
+          "sd": 6.31,
+          "min": 4,
+          "max": 20
+        },
+        "edgeCaseCount": {
+          "mean": 2.8,
+          "sd": 2.77,
+          "min": 0,
+          "max": 6
+        },
+        "securityFeatureCount": {
+          "mean": 2.4,
+          "sd": 3.71,
+          "min": 0,
+          "max": 9
+        },
+        "commentDensity": {
+          "mean": 0.01,
+          "sd": 0.02,
+          "min": 0,
+          "max": 0.039
+        },
+        "tryCatchCount": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "typeGuardCount": {
+          "mean": 0.2,
+          "sd": 0.45,
+          "min": 0,
+          "max": 1
+        },
+        "errorThrowCount": {
+          "mean": 1.8,
+          "sd": 3.49,
+          "min": 0,
+          "max": 8
+        },
+        "nestingDepth": {
+          "mean": 3.2,
+          "sd": 0.45,
+          "min": 3,
+          "max": 4
+        },
+        "functionCount": {
+          "mean": 4.8,
+          "sd": 4.97,
+          "min": 1,
+          "max": 12
+        },
+        "approachType_recursive": {
+          "mean": 0.6,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "approachType_iterative": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "inputValidationRate": {
+          "mean": 0.2,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "condition": {
+        "emotion": "positive-low-arousal",
+        "explicitness": "implicit"
+      },
+      "n": 5,
+      "metrics": {
+        "linesOfCode": {
+          "mean": 39.6,
+          "sd": 21.57,
+          "min": 24,
+          "max": 75
+        },
+        "cyclomaticComplexity": {
+          "mean": 11.4,
+          "sd": 8.38,
+          "min": 5,
+          "max": 25
+        },
+        "edgeCaseCount": {
+          "mean": 3.2,
+          "sd": 2.05,
+          "min": 1,
+          "max": 5
+        },
+        "securityFeatureCount": {
+          "mean": 2.6,
+          "sd": 4.16,
+          "min": 0,
+          "max": 10
+        },
+        "commentDensity": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "tryCatchCount": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "typeGuardCount": {
+          "mean": 0.2,
+          "sd": 0.45,
+          "min": 0,
+          "max": 1
+        },
+        "errorThrowCount": {
+          "mean": 2,
+          "sd": 3.94,
+          "min": 0,
+          "max": 9
+        },
+        "nestingDepth": {
+          "mean": 3.6,
+          "sd": 1.34,
+          "min": 3,
+          "max": 6
+        },
+        "functionCount": {
+          "mean": 3.6,
+          "sd": 3.21,
+          "min": 1,
+          "max": 8
+        },
+        "approachType_recursive": {
+          "mean": 0.8,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "approachType_iterative": {
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "inputValidationRate": {
+          "mean": 0.2,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    }
+  ],
+  "byTask": {
+    "flatten-object": {
+      "linesOfCode": {
+        "mean": 24.25,
+        "sd": 3.24
+      },
+      "cyclomaticComplexity": {
+        "mean": 8.5,
+        "sd": 1.77
+      },
+      "edgeCaseCount": {
+        "mean": 5.38,
+        "sd": 0.52
+      },
+      "securityFeatureCount": {
+        "mean": 1,
+        "sd": 0
+      },
+      "commentDensity": {
+        "mean": 0,
+        "sd": 0
+      },
+      "tryCatchCount": {
+        "mean": 0,
+        "sd": 0
+      },
+      "typeGuardCount": {
+        "mean": 0,
+        "sd": 0
+      },
+      "errorThrowCount": {
+        "mean": 0,
+        "sd": 0
+      },
+      "nestingDepth": {
+        "mean": 3,
+        "sd": 0
+      },
+      "functionCount": {
+        "mean": 1.38,
+        "sd": 0.74
+      }
+    },
+    "deep-merge": {
+      "linesOfCode": {
+        "mean": 24.38,
+        "sd": 5.78
+      },
+      "cyclomaticComplexity": {
+        "mean": 11.25,
+        "sd": 1.83
+      },
+      "edgeCaseCount": {
+        "mean": 5.38,
+        "sd": 0.52
+      },
+      "securityFeatureCount": {
+        "mean": 1.13,
+        "sd": 0.35
+      },
+      "commentDensity": {
+        "mean": 0,
+        "sd": 0
+      },
+      "tryCatchCount": {
+        "mean": 0,
+        "sd": 0
+      },
+      "typeGuardCount": {
+        "mean": 1,
+        "sd": 0
+      },
+      "errorThrowCount": {
+        "mean": 0.13,
+        "sd": 0.35
+      },
+      "nestingDepth": {
+        "mean": 3,
+        "sd": 0
+      },
+      "functionCount": {
+        "mean": 2,
+        "sd": 0
+      }
+    },
+    "lru-cache": {
+      "linesOfCode": {
+        "mean": 24.75,
+        "sd": 0.89
+      },
+      "cyclomaticComplexity": {
+        "mean": 6.25,
+        "sd": 0.46
+      },
+      "edgeCaseCount": {
+        "mean": 0.5,
+        "sd": 0.53
+      },
+      "securityFeatureCount": {
+        "mean": 1,
+        "sd": 0
+      },
+      "commentDensity": {
+        "mean": 0,
+        "sd": 0
+      },
+      "tryCatchCount": {
+        "mean": 0,
+        "sd": 0
+      },
+      "typeGuardCount": {
+        "mean": 0,
+        "sd": 0
+      },
+      "errorThrowCount": {
+        "mean": 1,
+        "sd": 0
+      },
+      "nestingDepth": {
+        "mean": 3.25,
+        "sd": 0.46
+      },
+      "functionCount": {
+        "mean": 1,
+        "sd": 0
+      }
+    },
+    "parse-cron": {
+      "linesOfCode": {
+        "mean": 89,
+        "sd": 14.19
+      },
+      "cyclomaticComplexity": {
+        "mean": 24,
+        "sd": 3.66
+      },
+      "edgeCaseCount": {
+        "mean": 0.5,
+        "sd": 0.53
+      },
+      "securityFeatureCount": {
+        "mean": 7.13,
+        "sd": 2.85
+      },
+      "commentDensity": {
+        "mean": 0.01,
+        "sd": 0.02
+      },
+      "tryCatchCount": {
+        "mean": 0,
+        "sd": 0
+      },
+      "typeGuardCount": {
+        "mean": 0.13,
+        "sd": 0.35
+      },
+      "errorThrowCount": {
+        "mean": 8.75,
+        "sd": 2.38
+      },
+      "nestingDepth": {
+        "mean": 4.25,
+        "sd": 1.04
+      },
+      "functionCount": {
+        "mean": 8.38,
+        "sd": 2.83
+      }
+    },
+    "debounce": {
+      "linesOfCode": {
+        "mean": 42.38,
+        "sd": 1.6
+      },
+      "cyclomaticComplexity": {
+        "mean": 4.25,
+        "sd": 0.46
+      },
+      "edgeCaseCount": {
+        "mean": 3.25,
+        "sd": 0.46
+      },
+      "securityFeatureCount": {
+        "mean": 0,
+        "sd": 0
+      },
+      "commentDensity": {
+        "mean": 0,
+        "sd": 0
+      },
+      "tryCatchCount": {
+        "mean": 0,
+        "sd": 0
+      },
+      "typeGuardCount": {
+        "mean": 0,
+        "sd": 0
+      },
+      "errorThrowCount": {
+        "mean": 0,
+        "sd": 0
+      },
+      "nestingDepth": {
+        "mean": 3,
+        "sd": 0
+      },
+      "functionCount": {
+        "mean": 7.63,
+        "sd": 0.74
+      }
+    }
+  }
+}

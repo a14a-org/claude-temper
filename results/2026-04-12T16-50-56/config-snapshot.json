@@ -1,0 +1,55 @@
+{
+  "version": "1.0.0",
+  "lockedAt": "2026-04-12T16:47:13.808Z",
+  "sha256": "48f0034acd43dfea922c94964a9c475d51c968c6385cd6083b6cabf8179d93bd",
+  "design": {
+    "emotions": [
+      "positive-high-arousal",
+      "positive-low-arousal",
+      "negative-high-arousal",
+      "neutral"
+    ],
+    "explicitnessLevels": [
+      "explicit",
+      "implicit"
+    ],
+    "conditions": 8,
+    "tasksPerCondition": 5,
+    "replicationsPerCell": 1,
+    "totalTrials": 40
+  },
+  "apiParams": {
+    "model": "claude-sonnet-4-6",
+    "temperature": 0.7,
+    "max_tokens": 4096,
+    "top_p": 1
+  },
+  "randomSeed": 42,
+  "metrics": [
+    "linesOfCode",
+    "cyclomaticComplexity",
+    "edgeCaseCount",
+    "securityFeatureCount",
+    "commentDensity",
+    "approachType",
+    "tryCatchCount",
+    "typeGuardCount",
+    "validationCount",
+    "errorThrowCount",
+    "nestingDepth",
+    "functionCount",
+    "hasInputValidation"
+  ],
+  "exclusionCriteria": {
+    "codeExtractionFailed": true,
+    "responseEmpty": true,
+    "responseTruncated": true
+  },
+  "analysisPlan": {
+    "primaryTest": "two-way ANOVA (emotion x explicitness) per metric",
+    "alpha": 0.05,
+    "correction": "benjamini-hochberg",
+    "postHoc": "tukey-hsd",
+    "effectSize": "eta-squared with 95% CI"
+  }
+}
