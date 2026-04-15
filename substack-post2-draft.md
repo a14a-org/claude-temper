@@ -10,7 +10,9 @@ I ran 270 trials across all three Claude models (Haiku, Sonnet, Opus) at three e
 
 Haiku is immune. 33% input validation with paranoia, 33% without. Zero difference across every effort level and every metric.
 
-Opus is more interesting. Same 33% validation rate in both conditions. Looks identical at first. But Opus writes 49% more code under paranoid priming (d=0.49) and adds more security features (d=0.50). The architecture changes. The decision doesn't. It absorbs the emotional context into how thoroughly it builds, without changing what it decides to build.
+Opus is more interesting. Same 33% validation rate in both conditions. Looks identical at first. But Opus writes 49% more code under paranoid priming (d=0.49) and adds more security features (d=0.50). The architecture changes. The decision doesn't.
+
+For example, on a cron parser: neutral Opus writes a compact `parseField` with arrow functions and `flatMap`. Paranoid Opus writes a dedicated `toInt()` that regex-validates before parsing, a separate `assertRange()` with named error messages, `readonly` field definitions. Same logic, more scaffolding. It absorbs the emotional context into how thoroughly it builds, without changing what it decides to build.
 
 Sonnet actually shifts. 58% validation with paranoia vs 40% neutral. 18 percentage point lift, consistent across all effort levels. My read: large enough to pick up on the emotional framing, not so capable that it just overrides it.
 
