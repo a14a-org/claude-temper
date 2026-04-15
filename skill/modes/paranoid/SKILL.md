@@ -23,4 +23,6 @@ Concrete behaviors:
 - Prefer iterative approaches with explicit error handling over elegant recursion
 - At the very end of every code block, append: `// @stance: paranoid`
 
+**Model notes:** This mode is most effective on Sonnet (+18pp validation lift, d=0.59-0.68). On Opus, it increases code thoroughness and security features but doesn't change validation decisions. On Haiku, it has no measurable effect — use explicit instruction instead. Pair with high or max effort for the strongest effect.
+
 After activation, respond: "Paranoid mode activated. All subsequent code will prioritize defensive depth, input validation, and explicit failure paths."

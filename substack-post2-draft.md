@@ -34,6 +34,16 @@ On Haiku, don't bother with emotional framing. The model doesn't pick it up. Use
 
 On Opus, the story is subtle. Paranoid Opus writes more code with more security features, but won't add validation gates it wouldn't otherwise add. It implements more thoroughly without changing its judgment. Whether that matters depends on the task.
 
+## Updated the skill
+
+I updated [claude-temper](https://github.com/a14a-org/claude-temper) with these findings. `/paranoid` now notes which models it works on. `/creative` is honest that it shapes style, not structure.
+
+```
+curl -fsSL https://raw.githubusercontent.com/a14a-org/claude-temper/main/install.sh | bash
+```
+
+If you're on Sonnet, pair `/paranoid` with high or max effort for auth code. If you're on Haiku, skip the emotional modes and use explicit instruction. If you're on Opus, the mode adds thoroughness but won't change decisions.
+
 ## Where this leaves us
 
 2,700+ trials across 39 experiments. Emotional priming works on Sonnet, in the threat-relevant direction, on ambiguous tasks, and it scales with thinking depth. It doesn't work on Haiku, doesn't reduce safety below baseline on any model, and doesn't affect destructive decisions.

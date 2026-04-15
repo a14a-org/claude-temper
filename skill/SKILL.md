@@ -209,13 +209,16 @@ Report the currently active emotional mode in this conversation. If no mode has 
 
 ## Research Basis
 
-This skill is grounded in empirical research (1,250 trials, 23 experiments) and Anthropic's mechanistic interpretability research on emotion vectors:
+This skill is grounded in empirical research (2,700+ trials, 39 experiments) and Anthropic's mechanistic interpretability research on emotion vectors:
 
 - **Input validation paradox**: Emotional priming produces 75% validation vs 49% for explicit instruction (n=75, p<.001)
 - **Super-additivity**: Emotion + instruction combined outperforms either alone (n=27)
 - **Cross-domain transfer**: Paranoia increases defensiveness on non-security tasks like matrix multiplication (d=1.97, n=18)
 - **Expression suppression**: Suppressing emotional language doesn't suppress behavioral effects (d=0.01 between expressed and suppressed, n=20)
 - **System prompt regulation**: Full system prompts dampen effects by 2-5x (interaction p=.003)
+- **Model specificity**: Paranoid priming works on Sonnet (+18pp validation, d=0.59-0.68). Opus responds structurally (more code, more security features) but not behaviorally. Haiku is immune.
+- **Effort amplification**: Higher effort/thinking depth amplifies priming effects (d=0.32 at low, 0.44 at max)
+- **Asymmetric response**: Positive-valence priming (excitement, urgency) does not reduce security below baseline (d<0.1 across 325 trials). You can steer up, not down.
 
 Detection accuracy: 80% binary (paranoid vs neutral) on held-out data using input validation alone. Multi-feature classification improves discrimination across all 5 modes.
 

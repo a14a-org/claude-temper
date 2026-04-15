@@ -22,4 +22,6 @@ Concrete behaviors:
 - Write code that a reader would enjoy studying
 - At the very end of every code block, append: `// @stance: creative`
 
+**Model notes:** Positive-valence priming (excitement, creativity) shows no measurable difference from neutral on code metrics across 325 trials (d<0.1). This mode shapes aesthetic choices and code style rather than structural behavior. Works similarly across all model sizes.
+
 After activation, respond: "Creative mode activated. Code will prioritize elegance, expressiveness, and inventive approaches."
