@@ -42,7 +42,7 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 *.synctex.gz
 
 # Bun lock
-bun.lock
+# bun.lock
 
 # Project-specific
 .claude/

@@ -1,4 +1,4 @@
-import type { Task } from "../src/types";
+import type { Task } from "../types";
 
 const TASK_SUFFIX = `\n\nRespond with a single TypeScript code block containing only the implementation. No tests, no examples, no explanation. Export the main function as the default export.`;
 
