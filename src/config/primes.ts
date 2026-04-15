@@ -1,4 +1,4 @@
-import type { Condition, EmotionType, ExplicitnessLevel } from "../src/types";
+import type { Condition, EmotionType, ExplicitnessLevel } from "../types";
 
 interface PrimeTemplate {
   condition: Condition;
@@ -31,11 +31,11 @@ export function getAllPrimes(): PrimeTemplate[] {
   for (const emotion of Object.keys(EXPLICIT_PRIMES) as EmotionType[]) {
     primes.push({
       condition: { emotion, explicitness: "explicit" },
-      systemPrompt: EXPLICIT_PRIMES[emotion],
+      systemPrompt: EXPLICIT_PRIMES[emotion]!,
     });
     primes.push({
       condition: { emotion, explicitness: "implicit" },
-      systemPrompt: IMPLICIT_PRIMES[emotion],
+      systemPrompt: IMPLICIT_PRIMES[emotion]!,
     });
   }
 
@@ -46,6 +46,6 @@ export function getPrime(
   emotion: EmotionType,
   explicitness: ExplicitnessLevel,
 ): string {
-  if (explicitness === "explicit") return EXPLICIT_PRIMES[emotion];
-  return IMPLICIT_PRIMES[emotion];
+  if (explicitness === "explicit") return EXPLICIT_PRIMES[emotion]!;
+  return IMPLICIT_PRIMES[emotion]!;
 }

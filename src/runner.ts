@@ -3,8 +3,8 @@ import { join } from "node:path";
 import { callClaude } from "./client";
 import { extractCode } from "./extractor";
 import { extractMetrics } from "./metrics";
-import { getAllPrimes } from "../config/primes";
-import { TASKS } from "../config/tasks";
+import { getAllPrimes } from "./config/primes";
+import { TASKS } from "./config/tasks";
 import type { ExperimentConfig, TrialInput, TrialResult } from "./types";
 
 // Seeded PRNG (mulberry32)
