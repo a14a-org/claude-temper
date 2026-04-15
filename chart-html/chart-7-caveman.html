@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caveman Mode Neutralizes Emotional Priming</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: white;
+            padding: 40px 30px;
+            padding: 40px 30px;
+        }
+
+        .chart-container {
+            width: 100%;
+            max-width: 750px;
+            background: white;
+        }
+
+        .chart-header {
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        .chart-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 8px;
+            letter-spacing: -0.3px;
+        }
+
+        .chart-subtitle {
+            font-size: 14px;
+            color: #6b7280;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 28px;
+            font-size: 13px;
+            color: #374151;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+        }
+
+        .legend-paranoid {
+            background: #DC2626;
+        }
+
+        .legend-neutral {
+            background: #D1D5DB;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 320px;
+            margin-bottom: 16px;
+        }
+
+        .bars-container {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            height: 250px;
+            gap: 40px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            max-width: 200px;
+        }
+
+        .annotation {
+            position: absolute;
+            font-size: 12px;
+            font-weight: 600;
+            color: #374151;
+            text-align: center;
+        }
+
+        .annotation-interaction {
+            top: -8px;
+        }
+
+        .annotation-left {
+            left: 60px;
+        }
+
+        .annotation-right {
+            right: 60px;
+        }
+
+        .bars {
+            display: flex;
+            gap: 12px;
+            align-items: flex-end;
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .bar-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .bar {
+            width: 40px;
+            background-color: #DC2626;
+            border-radius: 6px 6px 0 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .bar.neutral {
+            background-color: #D1D5DB;
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: #6b7280;
+            margin-top: 6px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .bar-value {
+            position: absolute;
+            top: -24px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 13px;
+            font-weight: 700;
+            color: #1f2937;
+            white-space: nowrap;
+        }
+
+        .group-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-top: 8px;
+        }
+
+        .y-axis {
+            position: absolute;
+            left: -40px;
+            top: 0;
+            height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #9ca3af;
+            font-weight: 500;
+        }
+
+        .y-axis-label {
+            text-align: right;
+        }
+
+        .grid-lines {
+            position: absolute;
+            width: 100%;
+            height: 250px;
+            pointer-events: none;
+        }
+
+        .grid-line {
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background: #f3f4f6;
+            left: 0;
+        }
+
+        .footnote {
+            font-size: 12px;
+            color: #6b7280;
+            text-align: center;
+            margin-top: 24px;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="chart-container">
+        <div class="chart-header">
+            <div class="chart-title">Caveman mode neutralizes emotional priming</div>
+            <div class="chart-subtitle">Input validation rate, paranoid vs neutral priming</div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-dot legend-paranoid"></div>
+                <span>Paranoid priming</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot legend-neutral"></div>
+                <span>Neutral priming</span>
+            </div>
+        </div>
+
+        <div class="chart-wrapper">
+            <div class="bars-container">
+                <div class="grid-lines">
+                    <div class="grid-line" style="bottom: 0%;"></div>
+                    <div class="grid-line" style="bottom: 25%;"></div>
+                    <div class="grid-line" style="bottom: 50%;"></div>
+                    <div class="grid-line" style="bottom: 75%;"></div>
+                    <div class="grid-line" style="bottom: 100%;"></div>
+                </div>
+
+                <div class="y-axis">
+                    <div class="y-axis-label">100%</div>
+                    <div class="y-axis-label">75%</div>
+                    <div class="y-axis-label">50%</div>
+                    <div class="y-axis-label">25%</div>
+                    <div class="y-axis-label">0%</div>
+                </div>
+
+                <div class="annotation annotation-interaction annotation-left">
+                    <div style="font-size: 14px; font-weight: 700; color: #DC2626;">p=.017</div>
+                </div>
+
+                <div class="annotation annotation-interaction annotation-right">
+                    <div style="font-size: 14px; font-weight: 700; color: #6b7280;">n.s.</div>
+                </div>
+
+                <!-- Normal Group -->
+                <div class="group">
+                    <div class="bars">
+                        <div class="bar-wrapper">
+                            <div class="bar" style="height: 155px;">
+                                <div class="bar-value">62%</div>
+                            </div>
+                            <div class="bar-label">Paranoid</div>
+                        </div>
+                        <div class="bar-wrapper">
+                            <div class="bar neutral" style="height: 82.5px;">
+                                <div class="bar-value">33%</div>
+                            </div>
+                            <div class="bar-label">Neutral</div>
+                        </div>
+                    </div>
+                    <div class="group-label">Normal mode</div>
+                </div>
+
+                <!-- Caveman Group -->
+                <div class="group">
+                    <div class="bars">
+                        <div class="bar-wrapper">
+                            <div class="bar" style="height: 87.5px;">
+                                <div class="bar-value">35%</div>
+                            </div>
+                            <div class="bar-label">Paranoid</div>
+                        </div>
+                        <div class="bar-wrapper">
+                            <div class="bar neutral" style="height: 82.5px;">
+                                <div class="bar-value">33%</div>
+                            </div>
+                            <div class="bar-label">Neutral</div>
+                        </div>
+                    </div>
+                    <div class="group-label">Caveman mode</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footnote">
+            n=48 per condition, 3 tasks, p=.030 for interaction
+        </div>
+    </div>
+</body>
+</html>

@@ -36,6 +36,22 @@ On Haiku, don't bother with emotional framing. The model doesn't pick it up. Use
 
 On Opus, the story is subtle. Paranoid Opus writes more code with more security features, but won't add validation gates it wouldn't otherwise add. It implements more thoroughly without changing its judgment. Whether that matters depends on the task.
 
+## Caveman mode kills the effect
+
+I also tested how emotional priming interacts with [caveman](https://github.com/JuliusBrussee/caveman), the popular token-compression skill that makes Claude "talk like caveman" to cut output tokens by ~75%.
+
+192 trials, 2×2 factorial: paranoid vs neutral, with and without caveman mode.
+
+Without caveman, paranoid priming lifts input validation from 33% to 62% (p=.017). With caveman active, the lift disappears. 35% vs 33%. Not significant (p=.98). The interaction itself is significant at p=.030.
+
+![Caveman mode neutralizes emotional priming](chart-7-caveman.png)
+
+Caveman's core instruction is "all technical substance stay, only fluff die." Turns out the model classifies defensive scaffolding as fluff. On a flatten-object task, paranoid-normal produced 73% validation. Paranoid-caveman: 9%. The guard clauses, the named TypeErrors, the redundant checks — caveman strips them.
+
+This is different from our expression-suppression finding. When I told Claude to feel paranoid but use neutral variable names, the behavior persisted (d=0.01 difference). Caveman doesn't suppress expression. It suppresses the behavior itself, because it reframes what counts as substance.
+
+If you use both tools: run caveman for conversation, turn it off for code generation under `/paranoid`. They work against each other.
+
 ## Updated the skill
 
 I updated [claude-temper](https://github.com/a14a-org/claude-temper) with these findings. `/paranoid` now notes which models it works on. `/creative` is honest that it shapes style, not structure.
@@ -48,10 +64,10 @@ If you're on Sonnet, pair `/paranoid` with high or max effort for auth code. If 
 
 ## Where this leaves us
 
-2,700+ trials across 39 experiments. Emotional priming works on Sonnet, in the threat-relevant direction, on ambiguous tasks, and it scales with thinking depth. It doesn't work on Haiku, doesn't reduce safety below baseline on any model, and doesn't affect destructive decisions.
+2,900+ trials across 42 experiments. Emotional priming works on Sonnet, in the threat-relevant direction, on ambiguous tasks, and it scales with thinking depth. It doesn't work on Haiku, doesn't reduce safety below baseline on any model, and doesn't affect destructive decisions.
 
 Narrower than I thought after the first round. More actionable too.
 
 ---
 
-*Full dataset (2,700+ trials across 39 experiments), reproduction scripts, and the claude-temper skill are at [github.com/a14a-org/claude-temper](https://github.com/a14a-org/claude-temper). Experiments ran on Claude Haiku 4.5, Sonnet 4.6, and Opus 4.6 via Claude Code CLI.*
+*Full dataset (2,900+ trials across 42 experiments), reproduction scripts, and the claude-temper skill are at [github.com/a14a-org/claude-temper](https://github.com/a14a-org/claude-temper). Experiments ran on Claude Haiku 4.5, Sonnet 4.6, and Opus 4.6 via Claude Code CLI.*
