@@ -1,28 +1,46 @@
+<p align="center">
+  <img src="hero.webp" alt="Three robots of different sizes responding differently to emotional priming" width="600" />
+</p>
+
 # claude-temper
 
-Research-backed emotional modes and behavioral stance detection for AI-assisted coding.
+Research-backed emotional modes for AI-assisted coding. 2,900+ trials across 42 experiments on Claude Haiku, Sonnet, and Opus.
 
-**Key finding:** Emotional framing in prompts produces measurably different code than explicit instruction — and sometimes *better* defensive code. Threat-relevant language increases input validation from 20% to 75% (n=75, p<.001), and the effect persists even when emotional expression is suppressed (d=0.01).
+**Key finding:** Emotional framing produces measurably different code than explicit instruction. Threat-relevant language increases input validation from 20% to 75% (n=75, p<.001). The effect is model-specific (Sonnet responds, Haiku doesn't, Opus changes structure but not decisions), scales with thinking depth, and gets neutralized by output-compression tools like caveman.
 
-## Install (one line)
+**Read the research:** [Post 1](https://dafmulder.substack.com/p/i-ran-1950-experiments-to-find-out) | [Post 2](https://dafmulder.substack.com/p/which-claude-is-most-emotionally-steerable)
+
+## Install
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/a14a-org/claude-temper/main/install.sh | bash
 ```
 
-This installs:
-- **5 emotional modes** (`/paranoid`, `/creative`, `/steady`, `/minimal`, `/fresh-eyes`)
-- **`/detect`** command to analyze any code file for behavioral signatures
+Installs 5 standalone slash commands and a detection system:
+
+| Mode | Frame | Best for |
+|------|-------|----------|
+| `/paranoid` | Threat vigilance | Security reviews, auth code, production deploys |
+| `/creative` | Exploration | Prototyping, architecture, brainstorming |
+| `/steady` | Methodical focus | Refactoring, debugging, code review |
+| `/minimal` | Economy | Scripts, utilities, quick tasks |
+| `/fresh-eyes` | Questioning | Reviewing unfamiliar code |
+
+Plus `/temper detect [file]` to analyze code for behavioral signatures and `/temper stance` to check the active mode.
+
+### Model notes
+
+- **Sonnet:** strongest effect. +18pp validation lift, d=0.59-0.68 on security metrics. Pair with high or max effort.
+- **Opus:** structural effect only. Writes more code with more security features, but doesn't change validation decisions.
+- **Haiku:** no measurable effect. Use explicit instruction instead.
 
 ### Live status bar (experimental)
-
-Want to see Claude's behavioral stance shift in real-time?
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/a14a-org/claude-temper/main/install.sh | bash -s -- --with-statusbar
 ```
 
-This adds a status line showing detected stance, self-report alignment, and drift warnings. Paranoid detection is ~80% accurate; other modes are less reliable from code metrics alone.
+Shows detected stance, self-report alignment, and drift warnings. Paranoid detection ~80% accurate; other modes less reliable from code metrics alone.
 
 ### Uninstall
 
@@ -30,95 +48,75 @@ This adds a status line showing detected stance, self-report alignment, and drif
 curl -fsSL https://raw.githubusercontent.com/a14a-org/claude-temper/main/install.sh | bash -s -- --uninstall
 ```
 
-## What it does
+## Research findings
 
-### Emotional Modes
+Based on 2,900+ trials across 42 experiments on Claude Haiku 4.5, Sonnet 4.6, and Opus 4.6.
 
-| Mode | Frame | Best For |
-|------|-------|----------|
-| `/paranoid` | Threat vigilance | Security reviews, auth code, production deploys |
-| `/creative` | Excitement, exploration | Prototyping, architecture, brainstorming |
-| `/steady` | Calm, methodical focus | Refactoring, debugging, code review |
-| `/minimal` | Detachment, economy | Scripts, utilities, quick tasks |
-| `/fresh-eyes` | Naive curiosity | Reviewing unfamiliar code, blind spots |
-
-### Live Detection
-
-The status line shows the model's detected behavioral stance in real-time:
-
-```
-PARANOID [████████░░]  self:par prose:par ALIGNED  parser.ts
-```
-
-Three detection layers:
-1. **Self-annotation** — the model tags its own stance (`// @stance: paranoid`)
-2. **Code metrics** — LOC, security features, throws, error ratio, naming patterns
-3. **Prose analysis** — hedging language, threat references, response length
-
-When layers disagree, **DRIFT** is flagged — the model's behavior diverged from its declared mode.
-
-## Research
-
-Based on 1,500+ trials across 29+ experiments. [Read the whitepaper](whitepaper.pdf) or [one-pager](onepager.pdf).
-
-### Key findings
-
+### Core effects
 1. **Emotional priming works** — threat-relevant language increases input validation from 20% to 75% (n=75, p<.001)
-2. **Emotion + instruction are super-additive** — combined achieves 94% input validation vs 69% (instruction) or 81% (emotion) alone
-3. **System prompts act as emotional regulators** — dampening effects by 2-5x (interaction p=.003)
-4. **Expression suppression doesn't eliminate behavior** — d=0.01 between expressed and suppressed paranoia
-5. **Cross-domain transfer** — paranoia doubles defensiveness even on math/CSV tasks (d=1.97)
-6. **Emotions can be inflicted** — unsolvable problems, rejection, and time pressure all produce large behavioral shifts (d=0.56-1.19) without explicit emotional instruction
+2. **Emotion + instruction are super-additive** — combined: 94% vs 69% (instruction) or 81% (emotion) alone
+3. **Expression suppression doesn't eliminate behavior** — d=0.01 between expressed and suppressed paranoia
+4. **Cross-domain transfer** — paranoia doubles defensiveness even on math/CSV tasks (d=1.97)
 
-Grounded in Anthropic's [Emotion Concepts in Claude](https://www.anthropic.com/research/emotion-concepts-function) (2025) — internal emotion vectors that causally shape behavior. We provide the first external behavioral validation.
+### Model and effort interactions
+5. **Model-specific** — Sonnet responds behaviorally (+18pp), Opus responds structurally (d=0.49 LOC, d=0.50 security), Haiku is immune
+6. **Effort amplifies priming** — d=0.32 (low) → 0.41 (high) → 0.44 (max). More thinking = stronger effect
+7. **System prompts dampen the effect** — 4x reduction when prime is appended to a 14k-token system prompt (p=.003)
 
-## Reproduce the experiments
+### Boundaries
+8. **Asymmetric response** — excitement/urgency does not reduce security below baseline (d<0.1, n=325). You can steer up, not down.
+9. **Destructive tasks unaffected** — priming doesn't change refactoring or code removal decisions (d=0.00-0.04, n=135)
+10. **Output compression kills the effect** — caveman mode neutralizes paranoid priming (62% → 35%, p=.030). "Only fluff die" reclassifies defensive scaffolding as fluff.
+
+Grounded in Anthropic's [Emotion Concepts in Claude](https://www.anthropic.com/research/emotion-concepts-function) (2025).
+
+## Reproduce
 
 ```bash
 bun install
 
 # Core experiments
-bun run src/orchestrator.ts           # Runs 725 trials autonomously
+bun run src/orchestrator.ts               # 725 trials (original batch)
+bun run src/orchestrator-post2.ts         # 475 trials (exploit, burnout, destructive)
+bun run src/orchestrator-model-effort.ts  # 270 trials (Haiku, Sonnet, Opus × effort)
+
+# Caveman interaction
+bun run src/exp-caveman-v2.ts             # 132 trials (caveman × paranoid)
+bun run src/exp-caveman-baseline.ts       # 100 trials (caveman vs normal)
 
 # Individual experiments
-bun run src/exp-replication.ts        # 225 trials (core finding)
-bun run src/exp-multi-emotion.ts      # 120 trials (emotion map)
-bun run src/exp-combo-extended.ts     # 108 trials (super-additivity)
-bun run src/exp-suppression-v2.ts     # 100 trials (expression suppression)
-bun run src/exp-cross-domain.ts       # 54 trials (domain transfer)
-
-# Inflicted emotions
-bun run src/exp-inflicted-unsolvable.ts   # 120 trials
-bun run src/exp-inflicted-rejection.ts    # 120 trials
-bun run src/exp-inflicted-confidence.ts   # 120 trials
-bun run src/exp-inflicted-pressure.ts     # 60 trials
-
-# Detection validation
-bun run src/validate-3layer.ts        # 3-layer detection test
-bun run src/linguistic-analyzer.ts    # Linguistic feature analysis
+bun run src/exp-replication.ts            # 225 trials (core finding)
+bun run src/exp-multi-emotion.ts          # 120 trials (emotion map)
+bun run src/exp-exploit-v2.ts             # 180 trials (excitement on auth tasks)
+bun run src/exp-model-effort.ts sonnet    # 90 trials (single model)
 ```
 
-Results are NDJSON (one JSON object per trial) in `results/`.
+Results are NDJSON in `results/`.
 
 ## Project structure
 
 ```
 claude-temper/
 ├── skill/                    # Installable Claude Code skill
-│   ├── SKILL.md             # Skill definition (modes + detection)
+│   ├── SKILL.md             # Main skill (detect + stance)
+│   ├── modes/               # Individual mode skills
+│   │   ├── paranoid/
+│   │   ├── creative/
+│   │   ├── steady/
+│   │   ├── minimal/
+│   │   └── fresh-eyes/
 │   ├── hooks/               # PostToolUse + Stop hooks
 │   └── status/              # Status line script
 ├── src/                      # Experiment infrastructure
 │   ├── experiment-runner.ts  # Shared trial runner
 │   ├── metrics.ts            # 14 automated code metrics
-│   ├── improved-classifier.ts # 3-class stance classifier
-│   ├── linguistic-analyzer.ts # NLP feature extraction
 │   └── exp-*.ts              # Individual experiments
-├── pilot/                    # Round 1 pilot data
 ├── results/                  # All experiment NDJSON data
-├── whitepaper.tex / .pdf     # Full research whitepaper
-├── onepager.tex / .pdf       # Marketing one-pager
-└── install.sh                # One-line installer
+├── whitepaper.tex / .pdf     # Research whitepaper
+├── onepager.tex / .pdf       # One-pager
+├── install.sh                # One-line installer
+├── substack-draft.md         # Post 1
+└── substack-post2-draft.md   # Post 2
 ```
 
 ## License
