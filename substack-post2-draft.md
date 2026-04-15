@@ -10,9 +10,9 @@ I ran 270 trials across all three Claude models (Haiku, Sonnet, Opus) at three e
 
 Haiku is immune. 33% input validation with paranoia, 33% without. Zero difference across every effort level and every metric.
 
-Opus is more interesting. Same 33% validation rate in both conditions, so it looks identical at first. But Opus writes 49% more code under paranoid priming (d=0.49) and adds more security features (d=0.50). The architecture changes, the decision doesn't. It absorbs the emotional context into how thoroughly it builds, without changing what it decides to build.
+Opus is more interesting. Same 33% validation rate in both conditions. Looks identical at first. But Opus writes 49% more code under paranoid priming (d=0.49) and adds more security features (d=0.50). The architecture changes. The decision doesn't. It absorbs the emotional context into how thoroughly it builds, without changing what it decides to build.
 
-Sonnet is the one that actually shifts. 58% validation with paranoia vs 40% neutral. An 18 percentage point lift, consistent across all effort levels. My read: Sonnet is large enough to pick up on the emotional framing but not so capable that it just overrides it.
+Sonnet actually shifts. 58% validation with paranoia vs 40% neutral. 18 percentage point lift, consistent across all effort levels. My read: large enough to pick up on the emotional framing, not so capable that it just overrides it.
 
 ![Emotional steerability by model](chart-5-models.png)
 
@@ -24,7 +24,7 @@ The effect grew with effort. Cohen's d for lines of code went from 0.32 (low) to
 
 ![More thinking amplifies emotional priming](chart-6-effort.png)
 
-I expected the opposite. The system prompt buffer from my first post diluted emotional signals, so I figured more internal context would do the same. Instead, it seems like the paranoid frame gives the thinking process a direction, and more thinking means more distance traveled in that direction.
+I expected the opposite. Longer system prompts diluted emotional signals in my first post, so I figured more internal context would do the same. Instead, the paranoid frame gives the thinking a direction. More thinking, more distance in that direction.
 
 ## What to do with this
 
@@ -36,9 +36,9 @@ On Opus, the story is subtle. Paranoid Opus writes more code with more security 
 
 ## Where this leaves us
 
-2,700+ trials across 39 experiments, and the picture keeps getting narrower. Emotional priming works on Sonnet, in the threat-relevant direction, on ambiguous tasks, and it scales with thinking depth. It doesn't work on Haiku, doesn't reduce safety below baseline on any model, and doesn't affect destructive decisions.
+2,700+ trials across 39 experiments. Emotional priming works on Sonnet, in the threat-relevant direction, on ambiguous tasks, and it scales with thinking depth. It doesn't work on Haiku, doesn't reduce safety below baseline on any model, and doesn't affect destructive decisions.
 
-Narrower than what I thought after the first round. But more actionable.
+Narrower than I thought after the first round. More actionable too.
 
 ---
 

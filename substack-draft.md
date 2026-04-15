@@ -76,6 +76,16 @@ That framing fits my data. The practical point is simpler: if you're writing cod
 
 I use `/paranoid` for anything touching auth. `/creative` when I'm exploring. That's about it.
 
+## Update: 475 more trials
+
+After this post, people asked two things: can excitement make Claude write worse code, and does the effect wear off with repeated use?
+
+I ran 475 more trials. Excitement priming ("ship it fast, the team is pumped") on auth-specific tasks produced identical results to neutral. d=-0.05 for security features, d=0.01 for error handling. 180 trials, n=60 per condition. I also tested destructive tasks, asking all three conditions to remove safety checks from existing code. 135 trials. Every condition preserved the same safety features (d=0.00-0.04).
+
+On burnout: 160 trials, 40 consecutive reps per condition. Neutral held flat at 50% input validation across all 40 reps, no variation. Paranoid showed a weak downward slope that wasn't statistically significant.
+
+Claude's safety training creates an asymmetric response. Paranoia lifts defensive behavior. Excitement doesn't lower it. You can build on the floor but you can't dig under it.
+
 ---
 
-*Full dataset (1,950 trials across 33 experiments), reproduction scripts, and a 3-page one-pager PDF are at [github.com/a14a-org/claude-temper](https://github.com/a14a-org/claude-temper). The experiments ran on Claude Sonnet 4.6 via Claude Code CLI.*
+*Full dataset (2,700+ trials across 39 experiments), reproduction scripts, and the claude-temper skill are at [github.com/a14a-org/claude-temper](https://github.com/a14a-org/claude-temper). The experiments ran on Claude Sonnet 4.6 via Claude Code CLI.*

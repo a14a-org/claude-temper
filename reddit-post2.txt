@@ -4,23 +4,23 @@ SUBREDDIT: r/ClaudeAI
 
 ---
 
-Follow-up to my post last week on emotional priming. Several of you asked whether the effect works across models, so I tested it.
+Follow-up to my post last week on emotional priming. A few of you asked whether this works across models. So I tested it.
 
-270 trials across Haiku, Sonnet, and Opus at three effort levels (low, high, max), with paranoid vs neutral priming on the same coding tasks.
+270 trials. Haiku, Sonnet, and Opus. Three effort levels (low, high, max). Paranoid vs neutral priming on the same coding tasks.
 
 Only Sonnet responds.
 
-Haiku: 33% input validation with paranoia, 33% without. No difference on any metric. The smallest model doesn't pick up emotional framing at all.
+Haiku: 33% input validation with paranoia, 33% without. Zero difference on every metric. The smallest model doesn't pick up emotional framing.
 
-Opus: also 33% vs 33% on validation. But it writes 49% more code and adds more security features (d=0.50) under paranoid priming. The architecture changes, the decision doesn't. Opus absorbs emotional context into how thoroughly it implements, without changing what it decides to do.
+Opus: also 33% vs 33% on validation. But it writes 49% more code and adds more security features (d=0.50) under paranoid priming. The architecture changes. The decision doesn't.
 
-Sonnet: 58% validation with paranoia vs 40% neutral. Consistent 18 percentage point lift across all effort levels. It's the only model where emotional priming changes the actual behavior.
+Sonnet: 58% with paranoia vs 40% neutral. 18 percentage point lift, consistent across all effort levels.
 
 [IMAGE: chart-5-models.png]
 
-The effort level finding was unexpected. I assumed more thinking would dilute the emotional signal, like how longer system prompts dampen priming (from the first post). Instead, more thinking amplifies it. Cohen's d went from 0.32 (low) to 0.41 (high) to 0.44 (max). The paranoid frame gives the thinking a direction, and more thinking means more distance in that direction.
+The effort finding caught me off guard. I expected more thinking to dilute the emotional signal, the way longer system prompts do. Instead it amplifies it. Cohen's d went from 0.32 (low effort) to 0.44 (max). The paranoid frame gives the reasoning a direction. More reasoning, more distance in that direction.
 
-I also ran 475 trials testing whether excitement/urgency reduces security (it doesn't, d<0.1) and whether the effect degrades over 40 consecutive reps (it doesn't). Updated the original post with those results.
+I also ran 475 trials testing whether excitement reduces security (it doesn't, d<0.1) and whether the effect degrades over 40 consecutive reps (it doesn't).
 
 Full writeup: https://dafmulder.substack.com/p/which-claude-is-most-emotionally-steerable
 
