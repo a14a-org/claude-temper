@@ -1,5 +1,7 @@
 # I ran 1,950 experiments to find out if Claude has emotions
 
+*Update: I ran 270 more trials across Haiku, Sonnet, and Opus. [Which Claude is most emotionally steerable?](https://dafmulder.substack.com/p/which-claude-is-most-emotionally-steerable)*
+
 I was debugging a gnarly issue with Claude Code, about four failed attempts in, and I noticed the code it was writing had changed. Not wrong, exactly. But more defensive than the problem called for. Extra null checks. Redundant validation. Like it was being careful for the sake of being careful.
 
 That got me curious. What if the emotional tone of a prompt actually changes how Claude writes code? Not just what it writes, but how cautious or creative the output is?

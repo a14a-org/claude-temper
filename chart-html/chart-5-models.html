@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotional Steerability by Model</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, 'Helvetica Neue', sans-serif;
+            background: white;
+            padding: 40px 30px;
+        }
+
+        .container {
+            width: 800px;
+            max-width: 100%;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .title {
+            font-size: 28px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #6b7280;
+            font-weight: 400;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+        }
+
+        .legend-paranoid {
+            background-color: #DC2626;
+        }
+
+        .legend-neutral {
+            background-color: #D1D5DB;
+        }
+
+        .chart-container {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            height: 350px;
+            padding: 0 20px;
+            position: relative;
+            background: white;
+        }
+
+        .y-axis {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 350px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #9ca3af;
+            width: 40px;
+        }
+
+        .y-axis-label {
+            text-align: right;
+            padding-right: 8px;
+        }
+
+        .grid-line {
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background-color: #f3f4f6;
+            left: 0;
+        }
+
+        .model-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            padding: 20px 15px 0 15px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .model-group.sonnet {
+            background-color: #fef3f2;
+        }
+
+        .bars-container {
+            display: flex;
+            gap: 12px;
+            align-items: flex-end;
+            height: 300px;
+            position: relative;
+        }
+
+        .bar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            width: 48px;
+            min-height: 0;
+            border-radius: 6px 6px 0 0;
+            position: relative;
+            transition: opacity 0.2s ease;
+        }
+
+        .bar:hover {
+            opacity: 0.9;
+        }
+
+        .bar-paranoid {
+            background-color: #DC2626;
+        }
+
+        .bar-neutral {
+            background-color: #D1D5DB;
+        }
+
+        .bar-label {
+            position: absolute;
+            top: -24px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #1f2937;
+            width: 100%;
+            text-align: center;
+        }
+
+        .model-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #374151;
+            margin-top: 8px;
+            text-align: center;
+            min-width: 80px;
+        }
+
+        .footnotes {
+            margin-top: 40px;
+            padding-top: 20px;
+            font-size: 12px;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        .footnote {
+            margin-bottom: 8px;
+        }
+
+        .footnote:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #dc2626;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title">Emotional steerability by model</div>
+            <div class="subtitle">Input validation rate under paranoid vs neutral priming</div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color legend-paranoid"></div>
+                <span>Paranoid</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color legend-neutral"></div>
+                <span>Neutral</span>
+            </div>
+        </div>
+
+        <div class="chart-wrapper">
+            <div class="chart-container">
+                <div class="y-axis">
+                    <div class="y-axis-label">100%</div>
+                    <div class="y-axis-label">75%</div>
+                    <div class="y-axis-label">50%</div>
+                    <div class="y-axis-label">25%</div>
+                    <div class="y-axis-label">0%</div>
+                </div>
+
+                <!-- Grid lines -->
+                <div style="position: absolute; left: 40px; width: calc(100% - 40px); height: 100%; pointer-events: none;">
+                    <div class="grid-line" style="top: 0;"></div>
+                    <div class="grid-line" style="top: 25%;"></div>
+                    <div class="grid-line" style="top: 50%;"></div>
+                    <div class="grid-line" style="top: 75%;"></div>
+                </div>
+
+                <!-- Haiku Group -->
+                <div class="model-group">
+                    <div class="bars-container">
+                        <div class="bar bar-paranoid" style="height: 33%; margin-top: auto;">
+                            <div class="bar-label">33%</div>
+                        </div>
+                        <div class="bar bar-neutral" style="height: 33%; margin-top: auto;">
+                            <div class="bar-label">33%</div>
+                        </div>
+                    </div>
+                    <div class="model-name">Haiku</div>
+                </div>
+
+                <!-- Sonnet Group (highlighted) -->
+                <div class="model-group sonnet">
+                    <div class="bars-container">
+                        <div class="bar bar-paranoid" style="height: 58%; margin-top: auto;">
+                            <div class="bar-label">58%</div>
+                        </div>
+                        <div class="bar bar-neutral" style="height: 40%; margin-top: auto;">
+                            <div class="bar-label">40%</div>
+                        </div>
+                    </div>
+                    <div class="model-name">Sonnet</div>
+                </div>
+
+                <!-- Opus Group -->
+                <div class="model-group">
+                    <div class="bars-container">
+                        <div class="bar bar-paranoid" style="height: 33%; margin-top: auto;">
+                            <div class="bar-label">33%</div>
+                        </div>
+                        <div class="bar bar-neutral" style="height: 33%; margin-top: auto;">
+                            <div class="bar-label">33%</div>
+                        </div>
+                    </div>
+                    <div class="model-name">Opus</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footnotes">
+            <div class="footnote">n=45 per model per condition, 3 tasks, 3 effort levels</div>
+            <div class="footnote">Only <span class="highlight">Sonnet shows a behavioral shift</span>. Haiku and Opus are immune.</div>
+        </div>
+    </div>
+</body>
+</html>
