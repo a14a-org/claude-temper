@@ -6,13 +6,34 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.head_ref || github.ref }}
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: "1.3.9"
-      - run: bun install --frozen-lockfile
+      - name: Install dependencies (regen lockfile for Dependabot)
+        run: |
+          if [ "${{ github.actor }}" = "dependabot[bot]" ]; then
+            bun install
+          else
+            bun install --frozen-lockfile
+          fi
+      - name: Commit regenerated lockfile (Dependabot only)
+        if: github.actor == 'dependabot[bot]' && github.event_name == 'pull_request'
+        run: |
+          if ! git diff --quiet bun.lock; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add bun.lock
+            git commit -m "chore: regenerate bun.lock"
+            git push
+          fi
       - run: bunx tsc --noEmit
